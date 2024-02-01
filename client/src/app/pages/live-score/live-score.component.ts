@@ -9,7 +9,7 @@ import { NgxTypedJsModule } from 'ngx-typed-js';
   standalone: true,
   imports: [CommonModule, LiveMatchCardComponent,NgxTypedJsModule],
   templateUrl: './live-score.component.html',
-  styleUrl: './live-score.component.css'
+  styleUrl: './live-score.component.scss'
 })
 export class LiveScoreComponent implements OnInit {
 

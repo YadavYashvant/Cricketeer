@@ -8,7 +8,7 @@ import { ApiService } from './services/api.service';
   standalone: true,
   imports: [CommonModule, RouterOutlet,RouterModule],
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit{
 

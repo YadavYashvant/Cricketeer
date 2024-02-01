@@ -1,0 +1,186 @@
+@mixin aspect-ratio($width, $height) {
+	position: relative;
+	&:before {
+		display: block;
+		content: "";
+		width: 100%;
+		padding-top: ($height / $width) * 100%;
+	}
+	> * {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+	}
+}
+
+*, *:before, *:after {
+	box-sizing: border-box;
+	position: relative;
+}
+
+html, body {
+	overflow: hidden;
+	height: 100%;
+}
+
+body {
+	font-family: 'Raleway', sans-serif;
+	color: white;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: url('https://iamjoshellis-codepen.s3.amazonaws.com/damon-big.jpg');
+	background-size: cover;
+	&:after {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		bottom: 0;
+		right: 0;
+		background: linear-gradient(to top, rgba(0,0,0,.25), rgba(0,0,0,0));
+	}
+}
+
+.background-image {
+	z-index: 1;
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	filter: blur(7px);
+	background: url('https://iamjoshellis-codepen.s3.amazonaws.com/damon-big.jpg');
+	background-size: cover;
+	transition: 0.3s ease-out;
+	&:after {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		bottom: 0;
+		right: 0;
+		background: linear-gradient(to top, rgba(0,0,0,.25), rgba(0,0,0,0));
+	}
+}
+
+.tv-film__bg {
+	box-shadow: 0 5px 5px -5px rgba(0,0,0,0.25);
+	width: 250px;
+	height: 250px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	background: url('https://iamjoshellis-codepen.s3.amazonaws.com/damon-small.jpg');
+	background-size: cover;
+	border-radius: 20px;
+	// Using calc here to keep the corners the same on non-square items
+	clip-path: polygon(20px 0, calc(100% - 20px) 0, 100% 20px, 100% calc(100% - 20px), calc(100% - 20px) 100%, 20px 100%, 0 calc(100% - 20px), 0 20px);
+	&:after {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background-color: rgba(0,0,0,0);
+		transition: background-color 0.3s ease-out;
+	}
+}
+
+.tv-film__content {
+	z-index: 100;
+	width: 50%;
+	border-radius: 50%;
+	text-align: center;
+	@include aspect-ratio(1,1);
+	background: rgba(#1dd2af, 0.9);
+	padding: 0.5em;
+	color: white;
+	transition: transform 0.3s ease-out;
+}
+
+.tv-film__title {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-transform: uppercase;
+	font-family: 'Montserrat', sans-serif;
+}
+.corner-container {
+	pointer-events: none;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	transition: all 0.4s ease-in;
+}
+.corner {
+	position: absolute;
+	width: 10px;
+	height: 10px;
+	border: 2px solid white;
+	transition: all 0.3s ease-out;
+	opacity: 0;
+}
+.corner--top {
+	border-bottom: none;
+	top: 0;
+}
+.corner--bottom {
+	border-top: none;
+	bottom: 0;
+}
+.corner--left {
+	left: 0;
+	border-right: none;
+}
+.corner--right {
+	right: 0;
+	border-left: none;
+}
+
+.tv-film__item {
+	margin: 15px 15px 0 0;
+	transition: transform 0.3s ease-out;
+	z-index: 1000;
+	&:hover {
+		transform: scale(1.05);
+		.tv-film__bg:after {
+			background-color: rgba(0,0,0,.1);
+		}
+		.tv-film__content {
+			transform: scale(1.1);
+		}
+		.corner {
+			opacity: 1;
+		}
+		.corner--top.corner--left {
+			transform: translate(-50%, -50%) scale(4);
+		}
+		.corner--top.corner--right {
+			transform: translate(50%, -50%) scale(4);
+		}
+		.corner--bottom.corner--left {
+			transform: translate(-50%, 50%) scale(4);
+		}
+		.corner--bottom.corner--right {
+			transform: translate(50%, 50%) scale(4);
+		}
+		.corner-container {
+			transform: rotate(210deg) scale(0.5);
+		}
+	}
+	&:active {
+		transform: scale(1);
+	}
+	&:hover + .background-image {
+		transform: scale(1.1);
+		filter: blur(3px);
+		will-change: transform, filter;
+	}
+}
