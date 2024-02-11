@@ -10,10 +10,9 @@ A full stack application in springboot and angular.
 ## Deployment
 
 
-```bash
+```
   Deployement of this project hasn't 
   been done on aws yet, I am planning to do so.
-
 ```
 
 
