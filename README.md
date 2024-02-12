@@ -43,7 +43,7 @@ Start the server
 Run springboot code on Intellij Idea
 
 ```bash
-  setup sql username and password
+  setup aiven username and password
   in application.properties
 ```
 
