@@ -6,11 +6,8 @@ A full stack application in springboot and angular.
 
 - [Yashvant Yadav](https://www.github.com/YadavYashvant)
 
-
-```
-  Deployement of this project hasn't 
-  been done yet, I am planning to do so.
-```
+NOTE: 
+- Deployement of this project hasn't  been done yet, I am planning to do so.
 
 
 ## Run Locally
